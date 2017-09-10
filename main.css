@@ -92,10 +92,12 @@ p, li{
 .disclaimer {
     justify-content: center;
     display: flex;
-    font-size:25px;
     padding-top:60px;
 }
 
+.disclaimer p {
+    font-size:25px;
+}
 @keyframes blinker {
     0% {color:#797dd7}
     33% {color: #6dba27}
