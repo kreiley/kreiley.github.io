@@ -33,6 +33,7 @@ var ww = 180;
 var hh = 50;
 var gameOverClicked = false;
 var gameOverMenu = false;
+var counter = 0;
 
 var gradient3=ctx.createLinearGradient(0,0,500,500);
     gradient3.addColorStop("0.08","#FF0000");
@@ -100,16 +101,27 @@ function mouseDownHandler(e) {
     }
 }
 
-function drawHead(x, y) {
+function drawHead(x, y, i) {
     ctx.beginPath();
     ctx.rect(x, y, snakeWidth, snakeHeight);
-         if(y > 0 && y < 99){ctx.fillStyle = "#FF0000";}
+    /*
+    if(y > 0 && y < 99){ctx.fillStyle = "#FF0000";}
     else if(y > 99 && y < 174){ctx.fillStyle = "#FF8000";}
     else if(y > 174 && y < 249){ctx.fillStyle = "#FFFF00";}
     else if(y > 249 && y < 324){ctx.fillStyle = "#008000";}
     else if(y > 324 && y < 399){ctx.fillStyle = "#0000FF";}
     else if(y > 399 && y < 500){ctx.fillStyle = "#A000C0";}
     else {ctx.fillStyle = "black";}
+    */
+    if(i % 6 == 0){ctx.strokeStyle = "#FF0000";}
+    else if(i % 6 == 1){ctx.strokeStyle = "#FF8000";}
+    else if(i % 6 == 2){ctx.strokeStyle = "#FFFF00";}
+    else if(i % 6 == 3){ctx.strokeStyle = "#008000";}
+    else if(i % 6 == 4){ctx.strokeStyle = "#0000FF";}
+    else if(i % 6 == 5){ctx.strokeStyle = "#A000C0";}
+    else {ctx.strokeStyle = "black";}
+    ctx.stroke();
+    ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
 }
@@ -117,8 +129,19 @@ function drawHead(x, y) {
 function drawFood() {
     ctx.beginPath();
     ctx.arc(foodX, foodY, foodRadius, 0, Math.PI*2);
-    ctx.fillStyle = "black";
+    
+    if(counter % 6 == 5){ctx.fillStyle = "#FF0000";}
+    else if(counter % 6 == 0){ctx.fillStyle = "#FF8000";}
+    else if(counter % 6 == 1){ctx.fillStyle = "#FFFF00";}
+    else if(counter % 6 == 2){ctx.fillStyle = "#008000";}
+    else if(counter % 6 == 3){ctx.fillStyle = "#0000FF";}
+    else if(counter % 6 == 4){ctx.fillStyle = "#A000C0";}
+    else {ctx.fillStyle = "black";}
     ctx.fill();
+    ctx.strokeStyle="white";
+    ctx.lineWidth=2;
+    ctx.stroke();
+    ctx.lineWidth=1;
     ctx.closePath();
 }
 
@@ -132,6 +155,7 @@ function snakeEat() {
         foodY = Math.floor((Math.random() * 19) + 1) * 25 + 12.5;
         snakeQx.push(snakeX);
         snakeQy.push(snakeY);
+        counter+=1;
     }
 }
 
@@ -184,7 +208,7 @@ function draw() {
             snakeQy.push(snakeY);
         }
         for(var i = 0; i < snakeQx.length; i++){
-            drawHead(snakeQx[i],snakeQy[i]);
+        drawHead(snakeQx[i],snakeQy[i], snakeQx.length - i - 1);
         }
         drawFood();
         snakeEat();
