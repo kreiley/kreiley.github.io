@@ -22,10 +22,39 @@ var tailX = 25;
 var tailY = 25;
 var count = 0;
 var change = false;
+var startClicked = false;
+var startX = 160;
+var startY = 250;
+var startW = 180;
+var startH = 50;
+var xx = 160;
+var yy = 310;
+var ww = 180;
+var hh = 50;
+var gameOverClicked = false;
+var gameOverMenu = false;
 
+var gradient3=ctx.createLinearGradient(0,0,500,500);
+    gradient3.addColorStop("0.08","#FF0000");
+    gradient3.addColorStop("0.17","#FF8000");
+    gradient3.addColorStop("0.25","#FFFF00");
+    gradient3.addColorStop("0.33","#008000");
+    gradient3.addColorStop("0.42","#0000FF");
+    gradient3.addColorStop("0.5","#A000C0");
+    gradient3.addColorStop("0.58","#FF0000");
+    gradient3.addColorStop("0.66","#FF8000");
+    gradient3.addColorStop("0.75","#FFFF00");
+    gradient3.addColorStop("0.83","#008000");
+    gradient3.addColorStop("0.92","#0000FF");
+    gradient3.addColorStop("1.0","#A000C0");
+
+/****************************/
+/****** EVENT HANDLERS ******/
+/****************************/
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousedown", mouseDownHandler, false);
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
@@ -53,6 +82,21 @@ function keyUpHandler(e) {
     }
     else if(e.keyCode == 40) {
         downPressed = false;
+    }
+}
+
+
+function mouseDownHandler(e) {
+    mouseDown = true;
+    var relativeX = e.clientX - canvas.offsetLeft;
+    var relativeY = e.clientY - canvas.offsetTop;
+    if(gameOverMenu){
+        if(relativeX > startX && relativeX < startX + startW && relativeY > startY && relativeY < startY + startH){
+            gameOverClicked = true;
+        }
+        else if(relativeX > xx && relativeX < xx + ww && relativeY > yy && relativeY < yy + hh){
+            window.location.replace("play.html");
+        }
     }
 }
 
@@ -94,59 +138,92 @@ function snakeEat() {
 function checkCollision(){
     for(var i = 0; i < snakeQx.length - 1; i++){
         if(snakeQx[i] == snakeX && snakeQy[i] == snakeY){
-                alert("Game Over :: OUROBOROS");
-                window.location.replace("play.html");
+                drawGameOver(0);
+                gameOverMenu = true;
         }
     }
     if(snakeX > canvas.width || snakeX < 0 || snakeY > canvas.height || snakeY < 0){
-            alert("Game Over")
-            window.location.replace("play.html");
+            drawGameOver(1);
+            gameOverMenu = true;
     }
 }
 
+function drawGameOver(num){
+    ctx.font="80px Pokemon_Pixel";
+    ctx.strokeStyle=gradient3;
+    if(num == 1){ctx.strokeText("GAME OVER", 125, 220);}
+    if(num == 0){ctx.strokeText("OUROBOROS", 117, 220);}
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.rect(startX,startY, startW, startH);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.strokeStyle= gradient3;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.font="36px Pokemon_Pixel";
+    ctx.fillStyle = gradient3;
+    ctx.fillText("Try Again", startX +37, startY + 36);
+    ctx.beginPath();
+    ctx.rect(xx,yy, ww, hh);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.strokeStyle = gradient3;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.font="36px Pokemon_Pixel";
+    ctx.fillStyle = gradient3;
+    ctx.fillText("Back to Menu", xx + 22, yy+36);
+}
+
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if(snakeQx.length == 0){
-        snakeQx.push(snakeX);
-        snakeQy.push(snakeY);
+    if(!gameOverMenu){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if(snakeQx.length == 0){
+            snakeQx.push(snakeX);
+            snakeQy.push(snakeY);
+        }
+        for(var i = 0; i < snakeQx.length; i++){
+            drawHead(snakeQx[i],snakeQy[i]);
+        }
+        drawFood();
+        snakeEat();
+        if(count >= 12){
+            if(dx != 0){snakeX += dx;}
+            if(dy != 0){snakeY += dy;}
+            snakeQx.push(snakeX);
+            snakeQy.push(snakeY);
+            snakeQx.shift();
+            snakeQy.shift();
+            count = 0;
+            change = false;
+            checkCollision();
+        }
+        if(rightPressed && dx == 0 && !change){
+            dx = 25;
+            dy = 0;
+            change = true;
+        }
+        else if(leftPressed && dx == 0 && !change){
+            dx = -25;
+            dy = 0;
+            change = true;
+        }
+        else if(upPressed && dy == 0 && !change){
+            dy = -25;
+            dx = 0;
+            change = true;
+        }
+        else if(downPressed && dy == 0 && !change){
+            dy = 25;
+            dx = 0;
+            change = true;
+        }
+        count++;
     }
-    for(var i = 0; i < snakeQx.length; i++){
-        drawHead(snakeQx[i],snakeQy[i]);
+    if(gameOverClicked){
+        window.location.replace("snake.html");
     }
-    drawFood();
-    snakeEat();
-    if(count >= 12){
-        if(dx != 0){snakeX += dx;}
-        if(dy != 0){snakeY += dy;}
-        snakeQx.push(snakeX);
-        snakeQy.push(snakeY);
-        snakeQx.shift();
-        snakeQy.shift();
-        count = 0;
-        change = false;
-        checkCollision();
-    }
-    if(rightPressed && dx == 0 && !change){
-        dx = 25;
-        dy = 0;
-        change = true;
-    }
-    else if(leftPressed && dx == 0 && !change){
-        dx = -25;
-        dy = 0;
-        change = true;
-    }
-    else if(upPressed && dy == 0 && !change){
-        dy = -25;
-        dx = 0;
-        change = true;
-    }
-    else if(downPressed && dy == 0 && !change){
-        dy = 25;
-        dx = 0;
-        change = true;
-    }
-    count++;
     requestAnimationFrame(draw);
 }
 
