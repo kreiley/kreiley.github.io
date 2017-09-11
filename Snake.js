@@ -4,10 +4,10 @@ var dx = 0;
 var dy = 0;
 var snakeWidth = 20;
 var snakeHeight = 20;
-var snakeX = 2.5;
-var snakeY = 2.5;
-var foodX = 112.5;
-var foodY = 112.5;
+var snakeX = 227.5;
+var snakeY = 227.5;
+var foodX = 262.5;
+var foodY = 237.5;
 var foodRadius = 8;
 var rightPressed = false;
 var leftPressed = false;
@@ -99,6 +99,54 @@ function mouseDownHandler(e) {
             window.location.replace("play.html");
         }
     }
+}
+
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+document.addEventListener('touchend', handleTouchEnd, false);
+
+var xDown = null;                                                        
+var yDown = null;                                                        
+
+function handleTouchStart(evt) {                                         
+    xDown = evt.touches[0].clientX;                                      
+    yDown = evt.touches[0].clientY;                                      
+};                                                
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            leftPressed = true; 
+        } else {
+            rightPressed = true;
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            upPressed = true;
+        } else { 
+            downPressed = true;
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
+function handleTouchEnd(evt){
+    leftPressed = false;
+    rightPressed = false;
+    upPressed = false;
+    downPressed = false;
 }
 
 function drawHead(x, y, i) {
