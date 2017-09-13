@@ -458,56 +458,26 @@ function drawControls(){
         ctx.rect(85,440, 158, 50);
         ctx.fillStyle = "white";
         ctx.fill();
-        ctx.closePath();
-        ctx.fillStyle = gradient2;
-        ctx.moveTo(85, 440);
-        ctx.lineTo(85+158, 440);
-        ctx.moveTo(85, 440 + 50);
-        ctx.lineTo(85+158, 440 +50);
-        ctx.moveTo(85, 440);
-        ctx.lineTo(85, 440 + 50);
-        ctx.moveTo(85+158, 440);
-        ctx.lineTo(85+158, 440 +50);
+        ctx.strokeStyle = gradient2;
         ctx.stroke();
+        ctx.closePath();
     }
     if(ctrlPressed && !shiftPressed){
         ctx.beginPath();
         ctx.rect(260,440, 150, 50);
         ctx.fillStyle = "white";
         ctx.fill();
-        ctx.closePath();
-        ctx.fillStyle = gradient2;
-        ctx.moveTo(260, 440);
-        ctx.lineTo(260+150, 440);
-        ctx.moveTo(260, 440 + 50);
-        ctx.lineTo(260+150, 440 +50);
-        ctx.moveTo(260, 440);
-        ctx.lineTo(260, 440 + 50);
-        ctx.moveTo(260+150, 440);
-        ctx.lineTo(260+150, 440 +50);
+        ctx.strokeStyle = gradient2;
         ctx.stroke();
+        ctx.closePath();
     }
     ctx.beginPath();
     ctx.rect(95, 450,squareWidth, squareHeight);
     ctx.fillStyle = "white";
     ctx.fill();
-    ctx.closePath();
-    ctx.beginPath();
-    ctx.fillStyle = gradient2;
-    
-    ctx.moveTo(95, 450);
-    ctx.lineTo(95+30, 450);
-    
-    ctx.moveTo(95, 450 + 30);
-    ctx.lineTo(95+30, 450 +30);
-    
-    ctx.moveTo(95, 450);
-    ctx.lineTo(95, 450 + 30);
-    
-    ctx.moveTo(95+30, 450);
-    ctx.lineTo(95+30, 450 +30);
+    ctx.strokeStyle = gradient2;
     ctx.stroke();
-    
+    ctx.closePath();
     ctx.font="25px Pokemon_Pixel";
     ctx.fillStyle=gradient2;
     ctx.fillText("= Shift + Click", 130, 470);
