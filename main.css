@@ -1,113 +1,30 @@
-* {
-    padding: 0; margin: 0;
-}
+/* CSS Document */
 
-body {
-   
+.company{
+	font-weight:700;
+	font-family:Cambria;
 }
-
-p, li{
-    font-family: 'Pokemon_Pixel','Roboto', sans-serif;
+.job {
+	font-style:italic;
 }
-
-#myCanvas {
-  padding: 0;
-  margin: auto;
-  display: block;
-
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
-  background-color:#d9efda;
+.jobTitle{
+	float:left;
 }
-
-.square {
-  width: 500px;
-  height: 500px;
-  padding: 0;
-  margin: auto;
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
-  background-color:#d9efda;
+.jobTitleDates{
+	float:right;
+	font-weight:700;
+	margin-left:100px;
 }
-
-.square .name p{
-    color:black;
-    font-size: 120px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    padding-top:25%;
-    padding-bottom:40px;
+.resume{
+	max-width:790px;
+	margin:auto;
 }
-
-.square .name a{
-    text-decoration: none;
+.resume h1,h3{
+	margin-bottom:0;
 }
-
-.square .about {
-    text-align: center;
-    display:flex;
-    align-content: center;
-    justify-content: center;
+.resume p{
+	margin:0;
 }
-
-.square .about ul{
-    color:white;
-    list-style: none;
-    padding-left: 0;
+.resume ul{
+	clear:both;
 }
-
-.square .about a {
-    color:black;
-    text-decoration: none;
-}
-
-.square .about ul li {
-    list-style:none;
-    padding-bottom:7px;
-    font-size:29px;
-}
-
-.square .about ul li b{
-    font-size:19px;
-    padding-bottom: 15px;
-    
-    
-}
-
-.square .about ul li:hover {
-    animation: blinker 1s linear infinite;
-    font-size:40px;
-}
-
-.disclaimer {
-    justify-content: center;
-    display: flex;
-    padding-top:60px;
-}
-
-.disclaimer p {
-    font-size:25px;
-}
-@keyframes blinker {
-    0% {color:#797dd7}
-    33% {color: #6dba27}
-    66% {color:#da3107}
-    100% {color:#797dd7}
-}
-
-@font-face {
-  font-family: Pokemon_Pixel;
-  src: url(pokemon_pixel_font.ttf);
-  font-weight: normal;
-}
-

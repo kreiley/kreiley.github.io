@@ -1,0 +1,112 @@
+* {
+    padding: 0; margin: 0;
+}
+
+body {
+   
+}
+
+p, li{
+    font-family: 'Pokemon_Pixel','Roboto', sans-serif;
+}
+
+#myCanvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
+  background-color:#d9efda;
+}
+
+.square {
+  width: 500px;
+  height: 500px;
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
+  background-color:#d9efda;
+}
+
+.square .name p{
+    color:black;
+    font-size: 120px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top:25%;
+    padding-bottom:40px;
+}
+
+.square .name a{
+    text-decoration: none;
+}
+
+.square .about {
+    text-align: center;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.square .about ul{
+    color:white;
+    list-style: none;
+    padding-left: 0;
+}
+
+.square .about a {
+    color:black;
+    text-decoration: none;
+}
+
+.square .about ul li {
+    list-style:none;
+    padding-bottom:7px;
+    font-size:29px;
+}
+
+.square .about ul li b{
+    font-size:19px;
+    padding-bottom: 15px;
+    
+    
+}
+
+.square .about ul li:hover {
+    animation: blinker 1s linear infinite;
+    font-size:40px;
+}
+
+.disclaimer {
+    justify-content: center;
+    display: flex;
+    padding-top:60px;
+}
+
+.disclaimer p {
+    font-size:25px;
+}
+@keyframes blinker {
+    0% {color:#797dd7}
+    33% {color: #6dba27}
+    66% {color:#da3107}
+    100% {color:#797dd7}
+}
+
+@font-face {
+  font-family: Pokemon_Pixel;
+  src: url(../fonts/pokemon_pixel_font.ttf);
+  font-weight: normal;
+}
