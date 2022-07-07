@@ -34,6 +34,7 @@ var hh = 50;
 var gameOverClicked = false;
 var gameOverMenu = false;
 var counter = 0;
+var drawDelay = 5;
 
 var gradient3=ctx.createLinearGradient(0,0,500,500);
     gradient3.addColorStop("0.08","#FF0000");
@@ -260,7 +261,7 @@ function draw() {
         }
         drawFood();
         snakeEat();
-        if(count >= 5){
+        if(count >= drawDelay){
             if(dx != 0){snakeX += dx;}
             if(dy != 0){snakeY += dy;}
             snakeQx.push(snakeX);

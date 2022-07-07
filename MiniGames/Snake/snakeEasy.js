@@ -34,7 +34,7 @@ var hh = 50;
 var gameOverClicked = false;
 var gameOverMenu = false;
 var counter = 0;
-var drawDelay = 8;
+var drawDelay = 12;
 
 var gradient3=ctx.createLinearGradient(0,0,500,500);
     gradient3.addColorStop("0.08","#FF0000");
@@ -261,7 +261,7 @@ function draw() {
         }
         drawFood();
         snakeEat();
-        if(count >= 8){
+        if(count >= drawDelay){
             if(dx != 0){snakeX += dx;}
             if(dy != 0){snakeY += dy;}
             snakeQx.push(snakeX);
@@ -295,7 +295,7 @@ function draw() {
         count++;
     }
     if(gameOverClicked){
-        window.location.replace("snakemedium.html");
+        window.location.replace("MiniGames/Snake/snakemedium.html");
     }
     requestAnimationFrame(draw);
 }

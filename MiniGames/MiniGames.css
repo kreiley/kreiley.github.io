@@ -107,6 +107,6 @@ p, li{
 
 @font-face {
   font-family: Pokemon_Pixel;
-  src: url(../fonts/pokemon_pixel_font.ttf);
+  src: url(/fonts/pokemon_pixel_font.ttf);
   font-weight: normal;
 }
