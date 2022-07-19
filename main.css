@@ -1,5 +1,36 @@
 /* CSS Document */
+/*Navigation Bar*/
+navigation{
+	display: grid;
+	align-items:center;
+	grid-template-columns: max-content auto 1fr;
+}
+navigation a{
+	text-decoration:none;
+	color:black;
+}
+.webtitle{justify-self:end;}
+.links{
+	display:flex;
+	align-items: center;
+	flex-flow: row wrap;
+	column-gap: 2em;
+	row-gap:.5em;
+}
+.links li {
+	list-style-type: none;
+}
+/* About Page */
+.profile{
+	display:grid;
+	align-items:center;
+	grid-template-columns: 1fr 600px 1fr;
+}
+.headshot img{
+	max-width:600px;
+}
 
+/*Resume Page*/
 .company{
 	font-weight:700;
 	font-family:Cambria;
@@ -29,22 +60,89 @@
 	clear:both;
 }
 
+/*Design Page*/
 .gallery {
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-count: 3;
-    
-  -webkit-column-gap: 15px;
-  -moz-column-gap: 15px;
-  column-gap: 15px;
+	display:grid;
+	
+}
+.gallery img{
+	max-width:600px;
 }
 
-.gallery-item {
-  display: inline-block;
-  width: 100%;
+/*Mini Games*/
+#myCanvas {
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
+  background-color:#d9efda;
 }
 
-.gallery img {
-  display:block;
-  width: 100%;
+.square {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 500px;
+  height: 500px;
+  box-shadow: inset 0 0 85px rgba(0, 0, 0, 0.15);
+  background-color:#d9efda;
 }
+
+.square .name p{
+	font-family: 'Pokemon_Pixel','Roboto', sans-serif;
+    color:black;
+    font-size: 120px;
+	text-align: center;
+}
+
+.square .name a{
+    text-decoration: none;
+}
+
+.square .about {
+    text-align: center;
+}
+
+.square .about ul{
+	font-family: 'Pokemon_Pixel','Roboto', sans-serif;
+    color:white;
+    list-style: none;
+    padding-left: 0;
+}
+
+.square .about a {
+    color:black;
+    text-decoration: none;
+}
+
+.square .about ul li {
+    list-style:none;
+    font-size:29px;
+}
+
+.square .about ul li b{
+    font-size:19px;
+}
+
+.square .about ul li:hover {
+    animation: blinker 1s linear infinite;
+    font-size:40px;
+}
+
+.disclaimer {
+	text-align:center;
+}
+.disclaimer p {
+	font-family: 'Pokemon_Pixel','Roboto', sans-serif;
+    font-size:25px;
+}
+@keyframes blinker {
+    0% {color:#797dd7}
+    33% {color: #6dba27}
+    66% {color:#da3107}
+    100% {color:#797dd7}
+}
+
+@font-face {
+  font-family: Pokemon_Pixel;
+  src: url(/Fonts/pokemon_pixel_font.ttf);
+  font-weight: normal;
+}
+
+

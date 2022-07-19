@@ -111,7 +111,7 @@ var yDown = null;
 function handleTouchStart(evt) {                                         
     xDown = evt.touches[0].clientX;                                      
     yDown = evt.touches[0].clientY;                                      
-};                                                
+}                                              
 
 function handleTouchMove(evt) {
     if ( ! xDown || ! yDown ) {
@@ -140,7 +140,7 @@ function handleTouchMove(evt) {
     /* reset values */
     xDown = null;
     yDown = null;                                             
-};
+}
 
 function handleTouchEnd(evt){
     leftPressed = false;
