@@ -223,7 +223,7 @@ function mouseDownHandler(e) {
         }
     }
     else if(relativeX > 10 && relativeX < 50 && relativeY > 10 && relativeY < 38){
-        window.location.replace("play.html");
+        window.location.replace("/MiniGames/play.html");
     }
     else if(relativeX >= leftPadding && relativeX <= canvas.width - leftPadding && relativeY >= topPadding && relativeY <= canvas.height - topPadding){
        relativeX = Math.floor(parseFloat((relativeX - leftPadding))/squareWidth);

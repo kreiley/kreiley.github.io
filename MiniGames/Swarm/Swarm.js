@@ -50,7 +50,7 @@ function mouseDownHandler(e) {
             startClicked = true;
         }
         else if(relativeX > xx && relativeX < xx + ww && relativeY > yy && relativeY < yy + hh){
-            window.location.replace("play.html");
+            window.location.replace("MiniGames/play.html");
         }
     }
 }

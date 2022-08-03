@@ -97,7 +97,7 @@ function mouseDownHandler(e) {
             gameOverClicked = true;
         }
         else if(relativeX > xx && relativeX < xx + ww && relativeY > yy && relativeY < yy + hh){
-            window.location.replace("snakemenu.html");
+            window.location.replace("/MiniGames/Snake/snakemenu.html");
         }
     }
 }

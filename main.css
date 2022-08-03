@@ -58,12 +58,13 @@ navigation a{
 }
 .resume ul{
 	clear:both;
+	margin-top:0;
 }
 span.extra-text{
 	display:none;
 }
 .expandable-text:hover span.extra-text{
-	display:
+	display:inline;
 	color:red;
 }
 
@@ -93,6 +94,11 @@ span.extra-text{
 	width:100%;
 	object-fit:cover;
 }
+.gallery-item > iframe{
+	width:100%;
+	object-fit:cover;
+}
+
 .wide{
 	grid-column:span 2;
 }
